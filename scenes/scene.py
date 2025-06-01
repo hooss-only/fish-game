@@ -11,7 +11,7 @@ class Scene:
         for sprite in self.sprites:
             sprite.render()
 
-    def tick(self):
+    def tick(self, delta_time):
         for sprite in self.sprites:
-            sprite.tick()
+            sprite.tick(delta_time)
 
