@@ -11,15 +11,24 @@ def main():
     
     # basic game loop
     loop = True
+    clock = pygame.time.Clock()
+    delta_time = 0.1
     while loop:
+        screen.fill('black')
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 loop = False
 
-        scenes[0].tick()
+            scenes[0].handle_event(event, delta_time)
+
+        scenes[0].tick(delta_time)
         scenes[0].render()
 
         pygame.display.flip()
+
+        delta_time = clock.tick(60) / 1000
+        delta_time = max(0.001, min(0.1, delta_time))
     return
 
 if __name__ == "__main__":
