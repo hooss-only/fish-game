@@ -1,7 +1,7 @@
 import pygame
 
 class Sprite:
-    x=0; y=0
+    rect = pygame.Rect(0, 0, 0, 0)
     screen: pygame.Surface
     image: pygame.Surface
 
@@ -9,8 +9,16 @@ class Sprite:
         self.screen = screen
 
     def render(self):
-        self.screen.blit(self.image, (self.x, self.y))
+        self.screen.blit(self.image, (self.rect.x, self.rect.y))
     
     def tick(self):
         return
 
+    def handle_event(self, event: pygame.event.Event, delta_time):
+        return
+    
+    def fit_rect_size_to_image(self):
+        self.rect.width, self.rect.height = self.image.get_size()
+
+    def get_hitbox(self):
+        return self.rect

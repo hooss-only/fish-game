@@ -15,3 +15,7 @@ class Scene:
         for sprite in self.sprites:
             sprite.tick(delta_time)
 
+    def handle_event(self, event: pygame.event.Event, delta_time):
+        for sprite in self.sprites:
+            sprite.handle_event(event, delta_time)
+
