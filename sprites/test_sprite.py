@@ -15,7 +15,7 @@ class TestSprite(Sprite):
 
     def tick(self, delta_time):
         if self.movable:
-            self.move_with_key(delta_time, 300)
+            self.move_with_key(delta_time, 3000)
         self.detect_wall(delta_time)
 
         self.rect.x += self.vx * delta_time
@@ -48,7 +48,7 @@ class TestSprite(Sprite):
             self.vx = 0
 
         if (self.rect.y + self.rect.height / 2 < 0):
-            self.vy += 500 * delta_time;
+            self.vy += 5000 * delta_time;
             self.movable = False
         else:
             self.movable = True
