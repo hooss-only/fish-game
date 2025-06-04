@@ -1,5 +1,5 @@
 import pygame
-from scenes.test_scene import TestScene
+from scenes.play_scene import PlayScene
 
 def main():
     pygame.init()
@@ -7,7 +7,7 @@ def main():
     pygame.display.set_caption("fish game")
 
     scenes = []
-    scenes.append(TestScene(screen))
+    scenes.append(PlayScene(screen))
     
     # basic game loop
     loop = True

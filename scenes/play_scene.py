@@ -1,8 +1,8 @@
 import pygame
 from scenes.scene import Scene
-from sprites.test_sprite import TestSprite
+from sprites.player_sprite import PlayerSprite
 
-class TestScene(Scene):
+class PlayScene(Scene):
     def __init__(self, screen: pygame.Surface):
         super().__init__(screen)
-        self.sprites.append(TestSprite(self.screen))
+        self.sprites.append(PlayerSprite(self.screen))

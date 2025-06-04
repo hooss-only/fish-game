@@ -1,7 +1,7 @@
 import pygame
 from sprites.sprite import Sprite
 
-class TestSprite(Sprite):
+class PlayerSprite(Sprite):
     vx = 0; vy = 0
     width = 0; height = 0;
 
@@ -10,7 +10,12 @@ class TestSprite(Sprite):
     
     def __init__(self, screen: pygame.Surface):
         super().__init__(screen)
-        self.image = pygame.image.load('./assets/pepe.png').convert()
+        self.image = pygame.image.load('./assets/fish.png').convert_alpha()
+        self.image = pygame.transform.scale(
+                self.image, 
+                (self.image.get_width() * 0.1, 
+                 self.image.get_height() * 0.1)
+        )
         self.rect.x = 100; self.rect.y = 100
         self.fit_rect_size_to_image()
 
