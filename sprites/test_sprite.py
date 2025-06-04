@@ -6,6 +6,7 @@ class TestSprite(Sprite):
     width = 0; height = 0;
 
     movable = True
+    horizontal = 1
     
     def __init__(self, screen: pygame.Surface):
         super().__init__(screen)
@@ -38,6 +39,10 @@ class TestSprite(Sprite):
 
         self.vx += speed * move_horizontal * delta_time
         self.vy += speed * move_vertical * delta_time
+
+        if move_horizontal != 0 and move_horizontal != self.horizontal:
+            self.image = pygame.transform.flip(self.image, True, False)
+            self.horizontal = move_horizontal
 
     def detect_wall(self, delta_time):
         screen_w, screen_h = self.screen.get_size()
