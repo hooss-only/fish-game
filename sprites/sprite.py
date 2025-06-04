@@ -6,12 +6,13 @@ class Sprite:
     image: pygame.Surface
 
     def __init__(self, screen: pygame.Surface):
+        self.rect = pygame.Rect(0, 0, 0, 0)
         self.screen = screen
 
     def render(self):
         self.screen.blit(self.image, (self.rect.x, self.rect.y))
     
-    def tick(self):
+    def tick(self, delta_time):
         return
 
     def handle_event(self, event: pygame.event.Event, delta_time):

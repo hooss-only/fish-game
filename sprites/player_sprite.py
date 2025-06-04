@@ -10,6 +10,7 @@ class PlayerSprite(Sprite):
     
     def __init__(self, screen: pygame.Surface):
         super().__init__(screen)
+        self.rect = pygame.Rect(0, 0, 0, 0)
         self.image = pygame.image.load('./assets/fish.png').convert_alpha()
         self.image = pygame.transform.scale(
                 self.image, 
