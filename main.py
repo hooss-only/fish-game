@@ -1,4 +1,5 @@
 import pygame
+from scenes.main_scene import MainScene
 from scenes.play_scene import PlayScene
 
 def main():
@@ -7,7 +8,9 @@ def main():
     pygame.display.set_caption("fish game")
 
     scenes = []
+    scenes.append(MainScene(screen))
     scenes.append(PlayScene(screen))
+    scene_number = 0
     
     # basic game loop
     loop = True
@@ -20,15 +23,17 @@ def main():
             if event.type == pygame.QUIT:
                 loop = False
 
-            scenes[0].handle_event(event, delta_time)
+            scenes[scene_number].handle_event(event, delta_time)
 
-        scenes[0].tick(delta_time)
-        scenes[0].render()
+        scenes[scene_number].tick(delta_time)
+        scenes[scene_number].render()
 
         pygame.display.flip()
 
         delta_time = clock.tick(60) / 1000
         delta_time = max(0.001, min(0.1, delta_time))
+
+        scene_number = scenes[scene_number].get_scene_number()
     return
 
 if __name__ == "__main__":
