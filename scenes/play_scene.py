@@ -3,6 +3,7 @@ from scenes.scene import Scene
 from sprites.player_sprite import PlayerSprite
 from sprites.background_sprite import BackgroundSprite
 from sprites.tropical_fish_sprite import TropicalFish
+from sprites.score_text import ScoreText
 
 class PlayScene(Scene):
     mini_fish_timer = 0
@@ -15,12 +16,15 @@ class PlayScene(Scene):
         self.sprites.append(BackgroundSprite(self.screen))
         self.sprites.append(self.player)
         self.sprites.append(TropicalFish(self.screen, self.player))
-    
+        self.sprites.append(ScoreText(self.screen, self.player))
+
     def tick(self, delta_time):
         super().tick(delta_time)
-        print(self.player.get_score())
 
         self.mini_fish_timer += 1
         if self.mini_fish_timer > 100:
             self.sprites.append(TropicalFish(self.screen, self.player))
             self.mini_fish_timer = 0
+
+    def render(self):
+        super().render()
