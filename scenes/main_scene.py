@@ -10,5 +10,3 @@ class MainScene(Scene):
         super().handle_event(event, delta_time)
         if (event.type == pygame.KEYDOWN):
             self.scene_number = 1
-
-    

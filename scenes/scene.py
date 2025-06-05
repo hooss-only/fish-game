@@ -17,10 +17,13 @@ class Scene:
     def tick(self, delta_time):
         for sprite in self.sprites:
             sprite.tick(delta_time)
-
-        for i in range(len(self.sprites)):
+        
+        i = 0
+        while i < len(self.sprites):
             if self.sprites[i].dead:
                 del self.sprites[i]
+                i -= 1
+            i += 1
 
     def handle_event(self, event: pygame.event.Event, delta_time):
         for sprite in self.sprites:
