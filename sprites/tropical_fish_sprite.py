@@ -3,7 +3,6 @@ import random
 from sprites.sprite import Sprite
 
 class TropicalFish(Sprite):
-
     def __init__(self, screen: pygame.Surface, player):
         super().__init__(screen)
         self.image = pygame.image.load('./assets/tropical_fish.png').convert_alpha()
@@ -31,8 +30,8 @@ class TropicalFish(Sprite):
         self.rect.x += self.direction * self.speed * delta_time
 
         if pygame.Rect.colliderect(self.get_hitbox(), self.player.get_hitbox()):
+            self.player.get_point()
             self.delete_self()
 
         if (self.direction == -1 and self.rect.x < -self.image.get_width()) or (self.direction == 1 and self.rect.x > self.screen.get_width() + self.image.get_width()):
             self.delete_self()
-

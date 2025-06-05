@@ -18,6 +18,7 @@ class PlayScene(Scene):
     
     def tick(self, delta_time):
         super().tick(delta_time)
+        print(self.player.get_score())
 
         self.mini_fish_timer += 1
         if self.mini_fish_timer > 100:

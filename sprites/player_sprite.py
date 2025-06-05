@@ -7,10 +7,10 @@ class PlayerSprite(Sprite):
 
     movable = True
     horizontal = 1
+    score = 0
     
     def __init__(self, screen: pygame.Surface):
         super().__init__(screen)
-        self.rect = pygame.Rect(0, 0, 0, 0)
         self.image = pygame.image.load('./assets/fish.png').convert_alpha()
         self.image = pygame.transform.scale(
                 self.image, 
@@ -66,3 +66,9 @@ class PlayerSprite(Sprite):
 
         if (self.rect.y + self.rect.height > screen_h and self.vy > 0):
             self.vy = 0
+
+    def get_point(self):
+        self.score += 1
+    
+    def get_score(self):
+        return self.score
