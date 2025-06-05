@@ -18,6 +18,10 @@ class Scene:
         for sprite in self.sprites:
             sprite.tick(delta_time)
 
+        for i in range(len(self.sprites)):
+            if self.sprites[i].dead:
+                del self.sprites[i]
+
     def handle_event(self, event: pygame.event.Event, delta_time):
         for sprite in self.sprites:
             sprite.handle_event(event, delta_time)

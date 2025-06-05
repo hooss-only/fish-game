@@ -2,12 +2,14 @@ import pygame
 
 class Sprite:
     rect = pygame.Rect(0, 0, 0, 0)
+    dead = False
     screen: pygame.Surface
     image: pygame.Surface
 
     def __init__(self, screen: pygame.Surface):
         self.rect = pygame.Rect(0, 0, 0, 0)
         self.screen = screen
+        self.dead = False
 
     def render(self):
         self.screen.blit(self.image, (self.rect.x, self.rect.y))
@@ -23,3 +25,6 @@ class Sprite:
 
     def get_hitbox(self):
         return self.rect
+    
+    def delete_self(self):
+        self.dead = True
