@@ -32,8 +32,12 @@ def main():
 
         delta_time = clock.tick(60) / 1000
         delta_time = max(0.001, min(0.1, delta_time))
-
-        scene_number = scenes[scene_number].get_scene_number()
+            
+        next_scene_number = scenes[scene_number].get_scene_number()
+        if (scene_number != next_scene_number):
+            scenes[scene_number].close()
+            scene_number = next_scene_number
+            scenes[scene_number].init()
     return
 
 if __name__ == "__main__":

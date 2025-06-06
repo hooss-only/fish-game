@@ -9,6 +9,10 @@ class Scene:
         self.sprites = []
         self.screen = screen
         self.scene_number = 0
+        self.init()
+
+    def init(self):
+        return
 
     def render(self):
         for sprite in self.sprites:
@@ -32,3 +36,5 @@ class Scene:
     def get_scene_number(self):
         return self.scene_number
     
+    def close(self):
+        self.sprites = []
