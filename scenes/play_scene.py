@@ -9,8 +9,7 @@ class PlayScene(Scene):
     mini_fish_timer = 0
     score = 0
 
-    def __init__(self, screen: pygame.Surface):
-        super().__init__(screen)
+    def init(self):
         self.player = PlayerSprite(self.screen)
         self.scene_number = 1
         self.sprites.append(BackgroundSprite(self.screen))
