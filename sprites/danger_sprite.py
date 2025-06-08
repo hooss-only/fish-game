@@ -9,8 +9,10 @@ class DangerSprite(Sprite):
         self.alpha = 128
         self.down = True
         self.speed = 5
+        self.timer = 0
 
     def tick(self, delta_time):
+        self.timer += 1
         if self.down:
             if self.alpha > 0:
                 self.alpha -= self.speed
@@ -21,6 +23,10 @@ class DangerSprite(Sprite):
                 self.alpha += self.speed
             else:
                 self.down = True
+
+        if self.timer > 100:
+            self.scene.showtime()
+            self.delete_self()
 
     def render(self):
         s = pygame.Surface((self.rect.width, self.rect.height))

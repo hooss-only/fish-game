@@ -1,4 +1,4 @@
-import pygame
+import pygame, random
 from scenes.scene import Scene
 from sprites.player_sprite import PlayerSprite
 from sprites.background_sprite import BackgroundSprite
@@ -10,6 +10,9 @@ from sprites.shark_sprite import Shark
 class PlayScene(Scene):
     mini_fish_timer = 0
     shark_timer = 0
+    big_thing_timer = 0
+    big_thing = None
+    while_big_thing = False
     score = 0
     screen: pygame.Surface
     
@@ -24,6 +27,8 @@ class PlayScene(Scene):
         self.sprites.append(TropicalFish(self.screen, self.player))
         self.sprites.append(ScoreText(self.screen, self.player))
 
+        self.big_things = ["Shark!"]
+
     def tick(self, delta_time):
         super().tick(delta_time)
 
@@ -34,8 +39,25 @@ class PlayScene(Scene):
 
         self.shark_timer += 1
         if self.shark_timer > 500:
-            self.sprites.append(Shark(self.screen, self.player, self))
+            if not self.while_big_thing:
+                self.sprites.append(Shark(self.screen, self.player, self))
             self.shark_timer = 0
+
+        self.big_thing_timer += 1
+        if self.big_thing_timer == 1000:
+            match random.choice(self.big_things):
+                case "Shark!":
+                    self.test()
+            self.while_big_thing = True
+
+    def test(self):
+        self.big_thing = Shark(self.screen, self.player, self)
+        self.sprites.append(DangerSprite(self.screen, pygame.Rect(100, 100, 100, 100), self))
+
+    def showtime(self):
+        self.while_big_thing = False
+        self.big_thing_timer = 0
+        self.sprites.append(self.big_thing)
 
     def render(self):
         super().render()
