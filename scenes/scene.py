@@ -9,7 +9,6 @@ class Scene:
         self.sprites = []
         self.screen = screen
         self.scene_number = 0
-        self.init()
 
     def init(self):
         return

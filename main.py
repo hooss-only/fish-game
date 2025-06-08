@@ -16,6 +16,8 @@ def main():
     loop = True
     clock = pygame.time.Clock()
     delta_time = 0.1
+
+    scenes[scene_number].init()
     while loop:
         screen.fill('black')
 
