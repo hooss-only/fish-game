@@ -4,10 +4,15 @@ from sprites.player_sprite import PlayerSprite
 from sprites.background_sprite import BackgroundSprite
 from sprites.tropical_fish_sprite import TropicalFish
 from sprites.score_text import ScoreText
+from sprites.danger_sprite import DangerSprite
 
 class PlayScene(Scene):
     mini_fish_timer = 0
     score = 0
+    screen: pygame.Surface
+    
+    def __init__(self, screen):
+        super().__init__(screen)
 
     def init(self):
         self.player = PlayerSprite(self.screen)
