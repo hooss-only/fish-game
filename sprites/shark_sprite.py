@@ -1,10 +1,10 @@
 import pygame
 import random
-from sprites.sprite import Sprite
+from sprites.dangerous_sprites import Dangerous
 
-class Shark(Sprite):
+class Shark(Dangerous):
     def __init__(self, screen: pygame.Surface, player, scene):
-        super().__init__(screen)
+        super().__init__(screen, player, scene)
         self.player = player
         self.scene = scene
 
@@ -29,7 +29,5 @@ class Shark(Sprite):
             self.image = pygame.transform.flip(self.image, True, False)
     
     def tick(self, delta_time):
+        super().tick(delta_time)
         self.rect.x += self.direction * self.speed * delta_time
-
-        if pygame.Rect.colliderect(self.get_hitbox(), self.player.get_hitbox()):
-            self.scene.scene_number = 0
